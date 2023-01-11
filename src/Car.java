@@ -45,6 +45,30 @@ public class Car {
                 ", объем двигателя: " + engineVolume;
     }
 
+    public String getBrand() {
+        return brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public double getEngineVolume() {
+        return engineVolume;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
