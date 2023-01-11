@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("Hello world!");
+        System.out.println("Домашнее задание");
         Car car1 = new Car("", "Granta", 0, "Россия", null, 0);
         Car car2 = new Car("Audi", "A8 50 L TDI quattro", 2020, "Германия", "Черный", 3.0);
         Car car3 = new Car("BMW", "Z8", 2021, "Германия", "Черный", 3.0);
