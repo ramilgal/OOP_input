@@ -15,6 +15,8 @@ public class Main {
         System.out.println(car5);
         Car.Key key = new Car.Key(true, false);
         System.out.println(key);
+        car3.ChangeTiresForSeasonal(8);
+        System.out.println(car3);
 
     }
 }

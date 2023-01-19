@@ -1,5 +1,4 @@
 package transport;
-import java.util.Objects;
 
 public class Car {
     private final String brand;
@@ -13,7 +12,7 @@ public class Car {
     private final String body;
     private String registrationNumber;
     private final int numberOfSeats;
-    boolean summerTiresOrWinterTires;
+    boolean summerTires;
         public static class Key {
             private final boolean remoteEngineStart;
             private final boolean keylessAccess;
@@ -23,14 +22,14 @@ public class Car {
             }
             @Override
             public String toString() {
-                return "удаленный запуск двигателя: " + remoteEngineStart +
-                        ", бесключевой доступ: " + keylessAccess;
+                return (remoteEngineStart ? "удаленный запуск есть":"удаленного запуска нет") +
+                        ", " + (keylessAccess ? "бесключевой доступ есть":"бесключевого доступа нет");
             }
         }
 
         public Car(String brand, String model, int year, String country, String color, double engineVolume,
                String transmission, String body, String registrationNumber, int numberOfSeats,
-                   boolean summerTiresOrWinterTires, Key key) {
+                   boolean summerTires, Key key) {
             if (brand == null || brand.isBlank() || brand.isEmpty()) {
                 this.brand = "default";
             } else this.brand = brand;
@@ -43,44 +42,26 @@ public class Car {
             if (country == null || country.isBlank() || country.isEmpty()) {
                 this.country = "default";
             } else this.country = country;
-            if (color == null || color.isEmpty() || color.isBlank()) {
-                this.color = "белый";} else this.color = color;
-            if (engineVolume <= 0) {
-                this.engineVolume = 1.5;} else this.engineVolume = engineVolume;
-            if (transmission == null || transmission.isBlank() || transmission.isEmpty()){
-                this.transmission = "default";} else this.transmission = transmission;
+            setColor(color);
+            setEngineVolume(engineVolume);
+            setTransmission(transmission);
             if (body == null || body.isBlank() || body.isEmpty()) {
                 this.body = "default";} else this.body = body;
-            if (registrationNumber == null || registrationNumber.isBlank() || registrationNumber.isEmpty()) {
-                this.registrationNumber = "default";} else this.registrationNumber = registrationNumber;
+            setRegistrationNumber(registrationNumber);
             if (numberOfSeats < 2) {
                 this.numberOfSeats = 2;} else this.numberOfSeats = numberOfSeats;
-            this.summerTiresOrWinterTires = summerTiresOrWinterTires;
-
-            if (key != null) {
-                this.key = key;}
+            this.summerTires = summerTires;
+            setKey(key);
         }
     //Метод сменить шины:
         public void ChangeTiresForSeasonal(int month) {
-        switch (month) {
-            case 11:
-            case 12:
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-                summerTiresOrWinterTires = false;
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-            case 9:
-            case 10:
-                summerTiresOrWinterTires = true;
-            default:
-                System.out.println("Такого месяца не существует");
+            if (month>=1 && month<=4 || month>=11 && month<=12) {
+                summerTires = false;
+            }
+            if (month >= 5 && month <= 10) {
+                summerTires = true;
+            }
         }
-    }
     @Override
     public String toString() {
         return "Марка: " + brand +
@@ -93,9 +74,10 @@ public class Car {
                 ", тип кузова: " + body +
                 ", регистрационный номер: " + registrationNumber +
                 ", количество мест: " + numberOfSeats +
-                ", тип резины: " + summerTiresOrWinterTires +
-                ", " + key;
-    }
+                ", тип резины: " + (summerTires ? "летняя":"зимняя")
+                + ", " + key;
+        }
+
 
     public String getBrand() {
         return brand;
@@ -137,50 +119,42 @@ public class Car {
         return numberOfSeats;
     }
 
-    public boolean isSummerTiresOrWinterTires() {
-        return summerTiresOrWinterTires;
+    public boolean isSummerTires() {
+        return summerTires;
     }
 
     public void setEngineVolume(double engineVolume) {
-        this.engineVolume = engineVolume;
+        if (engineVolume <= 0) {
+            this.engineVolume = 1.5;}
+            else this.engineVolume = engineVolume;
     }
 
     public void setColor(String color) {
-        this.color = color;
-    }
+        if (color == null || color.isEmpty() || color.isBlank()) {
+            this.color = "белый";} else this.color = color;
+        }
 
     public void setTransmission(String transmission) {
-        this.transmission = transmission;
+        if (transmission == null || transmission.isBlank() || transmission.isEmpty()){
+            this.transmission = "default";} else this.transmission = transmission;
     }
 
     public void setRegistrationNumber(String registrationNumber) {
-        this.registrationNumber = registrationNumber;
+        if (registrationNumber == null || registrationNumber.isBlank() || registrationNumber.isEmpty()) {
+            this.registrationNumber = "A111AA111";} else this.registrationNumber = registrationNumber;
     }
 
-    public void setSummerTiresOrWinterTires(boolean summerTiresOrWinterTires) {
-        this.summerTiresOrWinterTires = summerTiresOrWinterTires;
-    }
+    public void setSummerTires(boolean summerTires) {
+            this.summerTires = summerTires;
+        }
 
     public Key getKey() {
         return key;
     }
 
     public void setKey(Key key) {
-        this.key = key;
+        if (key != null) {
+            this.key = key;
+        } else key = new Key(false, false);
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Car car = (Car) o;
-        return Double.compare(car.engineVolume, engineVolume) == 0 && year == car.year && brand.equals(car.brand) && model.equals(car.model) && color.equals(car.color) && country.equals(car.country);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(brand, model, engineVolume, color, year, country);
-    }
-
-
 }
