@@ -17,20 +17,10 @@ public class Car {
         public static class Key {
             private final boolean remoteEngineStart;
             private final boolean keylessAccess;
-
             public Key(boolean remoteEngineStart, boolean keylessAccess) {
                 this.remoteEngineStart = remoteEngineStart;
                 this.keylessAccess = keylessAccess;
             }
-
-            public boolean isRemoteEngineStart() {
-                return remoteEngineStart;
-            }
-
-            public boolean isKeylessAccess() {
-                return keylessAccess;
-            }
-
             @Override
             public String toString() {
                 return "удаленный запуск двигателя: " + remoteEngineStart +
@@ -66,7 +56,9 @@ public class Car {
             if (numberOfSeats < 2) {
                 this.numberOfSeats = 2;} else this.numberOfSeats = numberOfSeats;
             this.summerTiresOrWinterTires = summerTiresOrWinterTires;
-            this.key = key;
+
+            if (key != null) {
+                this.key = key;}
         }
     //Метод сменить шины:
         public void ChangeTiresForSeasonal(int month) {
@@ -89,8 +81,6 @@ public class Car {
                 System.out.println("Такого месяца не существует");
         }
     }
-
-
     @Override
     public String toString() {
         return "Марка: " + brand +
