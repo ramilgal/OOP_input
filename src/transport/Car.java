@@ -1,13 +1,8 @@
 package transport;
 
-public class Car {
-    private final String brand;
-    private final String model;
+public class Car extends Transport {
     private Key key;
     private double engineVolume;
-    private String color;
-    private final int year;
-    private final String country;
     private String transmission;
     private final String body;
     private String registrationNumber;
@@ -27,22 +22,10 @@ public class Car {
             }
         }
 
-        public Car(String brand, String model, int year, String country, String color, double engineVolume,
-               String transmission, String body, String registrationNumber, int numberOfSeats,
-                   boolean summerTires, Key key) {
-            if (brand == null || brand.isBlank() || brand.isEmpty()) {
-                this.brand = "default";
-            } else this.brand = brand;
-            if (model == null || model.isBlank() || model.isEmpty()) {
-                this.model = "default";
-            } else this.model = model;
-            if (year <= 0) {
-                this.year = 2000;
-            } else this.year = year;
-            if (country == null || country.isBlank() || country.isEmpty()) {
-                this.country = "default";
-            } else this.country = country;
-            setColor(color);
+        public Car(String brand, String model, int year, String color, String country,
+                   double engineVolume, String transmission, String body, String registrationNumber,
+                   int numberOfSeats, boolean summerTires, Key key, int maxSpeed) {
+            super(brand, model, year, country, color, maxSpeed);
             setEngineVolume(engineVolume);
             setTransmission(transmission);
             if (body == null || body.isBlank() || body.isEmpty()) {
@@ -64,43 +47,25 @@ public class Car {
         }
     @Override
     public String toString() {
-        return "Марка: " + brand +
-                ", модель: " + model +
-                ", год выпуска: " + year +
-                ", страна сборки: " + country +
-                ", цвет кузова: " + color +
+    return "Марка: " + getBrand() +
+                ", модель: " + getModel() +
+                ", год выпуска: " + getYear() +
+                ", страна сборки: " + getCountry() +
+                ", цвет кузова: " + getColor() +
                 ", объем двигателя: " + engineVolume +
                 ", коробка передач: " + transmission +
                 ", тип кузова: " + body +
                 ", регистрационный номер: " + registrationNumber +
                 ", количество мест: " + numberOfSeats +
                 ", тип резины: " + (summerTires ? "летняя":"зимняя")
-                + ", " + key;
+                + ", " + key +
+                ", максимальная скорость: " + getMaxSpeed() + "."
+            ;
         }
 
 
-    public String getBrand() {
-        return brand;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
     public double getEngineVolume() {
         return engineVolume;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public String getCountry() {
-        return country;
     }
 
     public String getTransmission() {
@@ -125,14 +90,9 @@ public class Car {
 
     public void setEngineVolume(double engineVolume) {
         if (engineVolume <= 0) {
-            this.engineVolume = 1.5;}
-            else this.engineVolume = engineVolume;
+            this.engineVolume = 1.5;
+        } else this.engineVolume = engineVolume;
     }
-
-    public void setColor(String color) {
-        if (color == null || color.isEmpty() || color.isBlank()) {
-            this.color = "белый";} else this.color = color;
-        }
 
     public void setTransmission(String transmission) {
         if (transmission == null || transmission.isBlank() || transmission.isEmpty()){
