@@ -1,15 +1,16 @@
 package transport;
 
-public abstract class Transport {
+public abstract class Transport <T extends Driver> implements Competing {
     private String brand;
     private String model;
     private double engineVolume;
+    private T driver;
     ///private final int year;
     ///private final String country;
     ///private String color;
     //private int maxSpeed;
 
-    public Transport(String brand, String model, double engineVolume) {
+    public Transport(String brand, String model, double engineVolume, T driver) {
 //                      int year, String color, String country, int maxSpeed) {
         if (brand == null || brand.isBlank() || brand.isEmpty()) {
             this.brand = "default";
@@ -18,6 +19,7 @@ public abstract class Transport {
             this.model = "default";
         } else this.model = model;
         setEngineVolume(engineVolume);
+        setDriver(driver);
 //        if (year <= 0) {
 //            this.year = 2000;
 //        } else this.year = year;
@@ -34,11 +36,9 @@ public abstract class Transport {
     @Override
     public String toString() {
         return "Марка: " + brand +
-                ", модель: " + model;
-//                ", год выпуска: " + year +
-//                ", страна сборки: " + country +
-//                ", цвет кузова: " + color +
-//                ", максимальная скорость: " + maxSpeed;
+                ", модель: " + model +
+                ", объем двигателя: " + engineVolume + driver;
+
     }
 
     public String getBrand() {
@@ -67,6 +67,13 @@ public abstract class Transport {
         } else this.engineVolume = engineVolume;
     }
 
+    public T getDriver() {
+        return driver;
+    }
+
+    public void setDriver(T driver) {
+        this.driver = driver;
+    }
     //    public int getYear() {
 //        return year;
 //    }

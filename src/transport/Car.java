@@ -1,6 +1,6 @@
 package transport;
 
-public class Car extends Transport {
+public class Car extends Transport <DriverB> {
 //    private Key key;
 //    private double engineVolume;
 //    private String transmission;
@@ -21,8 +21,11 @@ public class Car extends Transport {
 //                        ", " + (keylessAccess ? "бесключевой доступ есть":"бесключевого доступа нет");
 //            }
 //        }
-    public Car(String brand, String model, double engineVolume) {
-        super(brand, model, engineVolume);
+
+    public Car(String brand, String model, double engineVolume, DriverB driver) {
+        super(brand, model, engineVolume, driver);
+    }
+
 
 //        public Car(String brand, String model, int year, String color, String country,
 //                   double engineVolume, String transmission, String body, String registrationNumber,
@@ -37,16 +40,31 @@ public class Car extends Transport {
 //                this.numberOfSeats = 2;} else this.numberOfSeats = numberOfSeats;
 //            this.summerTires = summerTires;
 //            setKey(key);
-        }
+
 
     @Override
     public void startMoving() {
-
+        System.out.println("Автомобиль начал движение");
     }
 
     @Override
     public void finishMoving() {
+        System.out.println("Автомобиль закончил движение");
+    }
 
+    @Override
+    public void pitStop() {
+        System.out.println("Пит-стоп для автомобиля");
+    }
+
+    @Override
+    public void bestTimeOfLap() {
+        System.out.println("Лучшее время круга у автомобиля");
+    }
+
+    @Override
+    public void maxSpeed() {
+        System.out.println("Максимальная скорость автомобиля");
     }
 
     //Метод сменить шины:
