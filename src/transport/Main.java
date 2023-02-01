@@ -1,25 +1,28 @@
 package transport;
+
+import static transport.Car.BodyType.CROSSOVER;
+import static transport.Car.BodyType.SEDAN;
+
 public class Main {
     public static void main(String[] args) {
-
         System.out.println("Домашнее задание");
         DriverB DriverB = new DriverB("Иван", true, 4);
         DriverC DriverC = new DriverC("Павел", true, 7);
         DriverD DriverD = new DriverD("Игорь", true, 8);
-        Car car1 = new Car("Lada", "Granta", 1.8D, DriverB);
-        Car car2 = new Car("Audi", "A8 50 L TDI quattro", 3.0D, DriverB);
-        Car car3 = new Car("BMW", "Z8",3.0D, DriverB);
-        Car car4 = new Car("Kia", "Sportage 4", 2.4D, DriverB);
+        Car car1 = new Car("Lada", "Granta", 1.8D, DriverB,SEDAN);
+        Car car2 = new Car("Audi", "A8 50 L TDI quattro", 3.0D, DriverB, SEDAN);
+        Car car3 = new Car("BMW", "Z8",3.0D, DriverB, SEDAN);
+        Car car4 = new Car("Kia", "Sportage 4", 2.4D, DriverB, CROSSOVER);
 
-        Bus bus1 = new Bus("Нефаз", "Городской", 4.0, DriverD);
-        Bus bus2 = new Bus("Белфаз", "Первый", 4.3, DriverD);
-        Bus bus3 = new Bus("Икарус", "Второй", 4.2, DriverD);
-        Bus bus4 = new Bus("Москвич", "Третий", 4.5, DriverD);
+        Bus bus1 = new Bus("Нефаз", "Городской", 4.0, DriverD, 10);
+        Bus bus2 = new Bus("Белфаз", "Первый", 4.3, DriverD, 20);
+        Bus bus3 = new Bus("Икарус", "Второй", 4.2, DriverD, 60);
+        Bus bus4 = new Bus("Москвич", "Третий", 4.5, DriverD, 100);
 
-        Truck truck1 = new Truck("Камаз", "Первый", 5.0, DriverC);
-        Truck truck2 = new Truck("Камаз", "Второй", 5.5, DriverC);
-        Truck truck3 = new Truck("Камаз", "Третий", 5.8, DriverC);
-        Truck truck4 = new Truck("Камаз", "Четвертый", 5.2, DriverC);
+        Truck truck1 = new Truck("Камаз", "Первый", 5.0, DriverC, 2);
+        Truck truck2 = new Truck("Камаз", "Второй", 5.5, DriverC, 9.5D);
+        Truck truck3 = new Truck("Камаз", "Третий", 5.8, DriverC, 11);
+        Truck truck4 = new Truck("Камаз", "Четвертый", 5.2, DriverC, 20);
         printInfoRace(car1);
         printInfoRace(car2);
         printInfoRace(car3);
@@ -32,6 +35,9 @@ public class Main {
         printInfoRace(truck2);
         printInfoRace(truck3);
         printInfoRace(truck4);
+        System.out.println();
+        System.out.println(car1);
+
     }
 
     private static void printInfoRace(Transport transport) {
