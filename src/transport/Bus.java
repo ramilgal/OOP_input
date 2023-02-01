@@ -1,6 +1,6 @@
 package transport;
 
-public class Bus extends Transport <DriverD> implements Competing {
+public class Bus extends Transport <DriverD> {
     private Capacity capacity;
     enum Capacity {
         VERYSMALL (0, 10),

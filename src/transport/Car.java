@@ -1,6 +1,6 @@
 package transport;
 
-public class Car extends Transport <DriverB> implements Competing {
+public class Car extends Transport <DriverB> {
     private BodyType bodyType;
     enum BodyType {
         SEDAN("Седан"),

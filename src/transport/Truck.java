@@ -1,6 +1,6 @@
 package transport;
 
-public class Truck extends Transport <DriverC> implements Competing {
+public class Truck extends Transport <DriverC> {
     private double loadCapacity;
     enum LoadCapacity {
         N1 (0, 10),
