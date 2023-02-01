@@ -63,6 +63,11 @@ public class Car extends Transport <DriverB> {
     }
 
     @Override
+    public void getType() {
+
+    }
+
+    @Override
     public void pitStop() {
         System.out.println("Пит-стоп для автомобиля");
     }

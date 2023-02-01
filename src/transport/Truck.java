@@ -57,6 +57,12 @@ public class Truck extends Transport <DriverC> {
             System.out.println("Данных по транспортному средству недостаточно");
         } else { System.out.println(getLoadCapacity());}
     }
+
+    @Override
+    public void getType() {
+
+    }
+
     @Override
     public void startMoving() {
         System.out.println("Грузовик начал движение");
