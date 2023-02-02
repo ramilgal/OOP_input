@@ -6,12 +6,6 @@ public abstract class Transport <T extends Driver> implements Competing {
     private double engineVolume;
     private T driver;
 
-    enum Type {
-        CAR,
-        BUS,
-        TRUCK;
-    }
-
     public Transport(String brand, String model, double engineVolume, T driver) {
         if (brand == null || brand.isBlank() || brand.isEmpty()) {
             this.brand = "default";
@@ -28,7 +22,7 @@ public abstract class Transport <T extends Driver> implements Competing {
 
     public abstract void printType();
 
-    public abstract void getType();
+    public abstract Type getType();
 
     @Override
     public String toString() {

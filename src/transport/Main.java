@@ -1,7 +1,9 @@
 package transport;
 
-import static transport.Car.BodyType.CROSSOVER;
-import static transport.Car.BodyType.SEDAN;
+import static transport.Capacity.*;
+import static transport.BodyType.*;
+import static transport.LoadCapacity.*;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -14,15 +16,15 @@ public class Main {
         Car car3 = new Car("BMW", "Z8",3.0D, DriverB, SEDAN);
         Car car4 = new Car("Kia", "Sportage 4", 2.4D, DriverB, CROSSOVER);
 
-        Bus bus1 = new Bus("Нефаз", "Городской", 4.0, DriverD, 10);
-        Bus bus2 = new Bus("Белфаз", "Первый", 4.3, DriverD, 20);
-        Bus bus3 = new Bus("Икарус", "Второй", 4.2, DriverD, 60);
-        Bus bus4 = new Bus("Москвич", "Третий", 4.5, DriverD, 100);
+        Bus bus1 = new Bus("Нефаз", "Городской", 4.0, DriverD, BIG);
+        Bus bus2 = new Bus("Белфаз", "Первый", 4.3, DriverD, SMALL);
+        Bus bus3 = new Bus("Икарус", "Второй", 4.2, DriverD, VERY_BIG);
+        Bus bus4 = new Bus("Москвич", "Третий", 4.5, DriverD, MIDDLE);
 
-        Truck truck1 = new Truck("Камаз", "Первый", 5.0, DriverC, 2);
-        Truck truck2 = new Truck("Камаз", "Второй", 5.5, DriverC, 9.5D);
-        Truck truck3 = new Truck("Камаз", "Третий", 5.8, DriverC, 11);
-        Truck truck4 = new Truck("Камаз", "Четвертый", 5.2, DriverC, 20);
+        Truck truck1 = new Truck("Камаз", "Первый", 5.0, DriverC, N1);
+        Truck truck2 = new Truck("Камаз", "Второй", 5.5, DriverC, N2);
+        Truck truck3 = new Truck("Камаз", "Третий", 5.8, DriverC, N3);
+        Truck truck4 = new Truck("Камаз", "Четвертый", 5.2, DriverC, N3);
         printInfoRace(car1);
         printInfoRace(car2);
         printInfoRace(car3);
@@ -37,6 +39,10 @@ public class Main {
         printInfoRace(truck4);
         System.out.println();
         System.out.println(car1);
+        System.out.println();
+        System.out.println(bus1);
+        System.out.println();
+        System.out.println(truck1);
 
     }
 

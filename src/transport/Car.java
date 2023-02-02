@@ -2,35 +2,6 @@ package transport;
 
 public class Car extends Transport <DriverB> {
     private BodyType bodyType;
-    enum BodyType {
-        SEDAN("Седан"),
-        HATCHBACK("Хетчбэк"),
-        COUPE("Купе"),
-        UNIVERSAL("Универсал"),
-        JEEP("Внедорожник"),
-        CROSSOVER("Кроссовер"),
-        PICKUP("Пикап"),
-        WAGON("Фургон"),
-        MINIVAN("Минивэн");
-        private String type;
-        BodyType(String type) {
-        this.type = type;
-        }
-
-        public String getType() {
-            return type;
-        }
-
-        public void setType(String type) {
-            this.type = type;
-        }
-
-
-        @Override
-        public String toString() {
-            return "тип кузова: " + type;
-        }
-    }
 
     public Car(String brand, String model, double engineVolume, DriverB driver, BodyType bodyType) {
         super(brand, model, engineVolume, driver);
@@ -63,8 +34,8 @@ public class Car extends Transport <DriverB> {
     }
 
     @Override
-    public void getType() {
-
+    public Type getType() {
+        return Type.CAR;
     }
 
     @Override
@@ -84,7 +55,8 @@ public class Car extends Transport <DriverB> {
 
     @Override
     public String toString() {
-    return "Марка: " + getBrand() +
+    return "Тип средства: " + getType() +
+            ", марка: " + getBrand() +
                 ", модель: " + getModel() +
             ", " + bodyType;
         }

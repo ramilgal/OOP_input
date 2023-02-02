@@ -1,44 +1,18 @@
 package transport;
 
 public class Truck extends Transport <DriverC> {
-    private double loadCapacity;
-    enum LoadCapacity {
-        N1 (0, 10),
-        N2 (3.5F, 12),
-        N3 (13, 200);
-        private float min;
-        private float max;
+    private LoadCapacity loadCapacity;
 
-        LoadCapacity(float min, float max) {
-            this.min = min;
-            this.max = max;
-        }
-
-        public float getMin() {
-            return min;
-        }
-
-        public float getMax() {
-            return max;
-        }
-        @Override
-        public String toString() {
-            return "Грузоподъемность: " +
-                    "от " + min +
-                    " до " + max +
-                    " тонн";
-        }
-    }
-    public Truck(String brand, String model, double engineVolume, DriverC driver, double loadCapacity) {
+    public Truck(String brand, String model, double engineVolume, DriverC driver, LoadCapacity loadCapacity) {
         super(brand, model, engineVolume, driver);
         setLoadCapacity(loadCapacity);
     }
 
-    public double getLoadCapacity() {
+    public LoadCapacity getLoadCapacity() {
         return loadCapacity;
     }
 
-    public void setLoadCapacity(double loadCapacity) {
+    public void setLoadCapacity(LoadCapacity loadCapacity) {
         this.loadCapacity = loadCapacity;
     }
 
@@ -53,14 +27,14 @@ public class Truck extends Transport <DriverC> {
     }
     @Override
     public void printType() {
-        if (getLoadCapacity() == 0) {
+        if (getLoadCapacity() == null) {
             System.out.println("Данных по транспортному средству недостаточно");
         } else { System.out.println(getLoadCapacity());}
     }
 
     @Override
-    public void getType() {
-
+    public Type getType() {
+        return Type.TRUCK;
     }
 
     @Override
@@ -87,12 +61,12 @@ public class Truck extends Transport <DriverC> {
     public void maxSpeed() {
         System.out.println("Максимальная скорость грузовика");
     }
-
-//    @Override
-//    public String toString() {
-//        return "Грузоподъемность: " +
-//                "от " + getMin() +
-//                " до " + loadCapacity.getMax() +
-//                " тонн";
-//    }
+    @Override
+    public String toString() {
+        return "Тип средства: " + getType() +
+                ", грузоподъемность: " +
+                "от " + loadCapacity.getMin() +
+                " до " + loadCapacity.getMax() +
+                " тонн";
+    }
 }
