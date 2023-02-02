@@ -22,11 +22,14 @@ public abstract class Transport <T extends Driver> implements Competing {
 
     public abstract void printType();
 
+    public abstract Type getType();
+
     @Override
     public String toString() {
         return "Марка: " + brand +
                 ", модель: " + model +
-                ", объем двигателя: " + engineVolume + driver;
+                ", объем двигателя: " +
+                engineVolume + driver;
 
     }
 
