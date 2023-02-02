@@ -69,4 +69,8 @@ public class Truck extends Transport <DriverC> {
                 " до " + loadCapacity.getMax() +
                 " тонн";
     }
+    @Override
+    public void passDiagnostic() {
+        System.out.println("Грузовик может проходить диагностику");
+    }
 }
