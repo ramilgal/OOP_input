@@ -61,8 +61,9 @@ public class Car extends Transport <DriverB> {
             ", " + bodyType;
         }
     @Override
-    public void passDiagnostic() {
-        System.out.println("Легковой автомобиль может проходить диагностику");
+    public boolean passDiagnostic() {
+        System.out.println("Легковой автомобиль " + getModel() + " " + getBrand() + " может проходить диагностику");
+        return false;
     }
 
 }

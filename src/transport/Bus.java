@@ -60,8 +60,17 @@ public class Bus extends Transport <DriverD> {
                 " - " + capacity.getMax();
     }
     @Override
-    public void passDiagnostic() throws TransportTypeException {
-        throw new TransportTypeException("Автобус не может проходить диагностику");
+    public boolean passDiagnostic() throws TransportTypeException {
+        try {
+            throw new TransportTypeException("Автобус "+ getBrand() + " не должен проходить диагностику");
+        }
+        catch (TransportTypeException e) {
+            e.printStackTrace();
+        } finally {
+            System.out.println();
+            //System.out.println("Диагностика завершена");
+        }
+        return false;
     }
 
 

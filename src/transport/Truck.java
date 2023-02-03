@@ -70,7 +70,8 @@ public class Truck extends Transport <DriverC> {
                 " тонн";
     }
     @Override
-    public void passDiagnostic() {
-        System.out.println("Грузовик может проходить диагностику");
+    public boolean passDiagnostic() {
+        System.out.println("Грузовик " + getModel() + " " + getBrand() + " может проходить диагностику");
+        return false;
     }
 }
