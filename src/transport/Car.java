@@ -60,5 +60,10 @@ public class Car extends Transport <DriverB> {
                 ", модель: " + getModel() +
             ", " + bodyType;
         }
+    @Override
+    public boolean passDiagnostic() {
+        System.out.println("Легковой автомобиль " + getModel() + " " + getBrand() + " может проходить диагностику");
+        return false;
+    }
 
 }

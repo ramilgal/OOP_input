@@ -69,4 +69,9 @@ public class Truck extends Transport <DriverC> {
                 " до " + loadCapacity.getMax() +
                 " тонн";
     }
+    @Override
+    public boolean passDiagnostic() {
+        System.out.println("Грузовик " + getModel() + " " + getBrand() + " может проходить диагностику");
+        return false;
+    }
 }

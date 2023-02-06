@@ -6,7 +6,7 @@ import static transport.LoadCapacity.*;
 
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args)  {
         System.out.println("Домашнее задание");
         DriverB DriverB = new DriverB("Иван", true, 4);
         DriverC DriverC = new DriverC("Павел", true, 7);
@@ -21,7 +21,7 @@ public class Main {
         Bus bus3 = new Bus("Икарус", "Второй", 4.2, DriverD, VERY_BIG);
         Bus bus4 = new Bus("Москвич", "Третий", 4.5, DriverD, MIDDLE);
 
-        Truck truck1 = new Truck("Камаз", "Первый", 5.0, DriverC, N1);
+        Truck truck1 = new Truck("Камаз", "Первый", 5.0, DriverC,N1);
         Truck truck2 = new Truck("Камаз", "Второй", 5.5, DriverC, N2);
         Truck truck3 = new Truck("Камаз", "Третий", 5.8, DriverC, N3);
         Truck truck4 = new Truck("Камаз", "Четвертый", 5.2, DriverC, N3);
@@ -43,6 +43,25 @@ public class Main {
         System.out.println(bus1);
         System.out.println();
         System.out.println(truck1);
+        System.out.println();
+        try {
+            car1.passDiagnostic();
+            bus1.passDiagnostic();
+            bus2.passDiagnostic();
+            truck1.passDiagnostic();
+            bus1.passDiagnostic();
+            car2.passDiagnostic();
+        } catch (TransportTypeException e) {
+            e.printStackTrace();
+            System.out.println("Автобусам проходить диагностику не нужно");
+        }
+//        try {
+//            bus1.passDiagnostic();
+//        } catch (TransportTypeException e) {
+//            throw new TransportTypeException("Автобус не может проходить диагностику");
+//            //System.out.println("Автобусам проходить диагностику не нужно");
+//        }
+
 
     }
 
