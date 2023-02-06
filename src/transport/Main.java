@@ -6,7 +6,7 @@ import static transport.LoadCapacity.*;
 
 
 public class Main {
-    public static void main(String[] args) throws TransportTypeException {
+    public static void main(String[] args)  {
         System.out.println("Домашнее задание");
         DriverB DriverB = new DriverB("Иван", true, 4);
         DriverC DriverC = new DriverC("Павел", true, 7);
@@ -44,18 +44,23 @@ public class Main {
         System.out.println();
         System.out.println(truck1);
         System.out.println();
-        car1.passDiagnostic();
-        truck1.passDiagnostic();
-        bus1.passDiagnostic();
-        car2.passDiagnostic();
-        bus2.passDiagnostic();
-//        if (bus1.passDiagnostic()) {
+        try {
+            car1.passDiagnostic();
+            bus1.passDiagnostic();
+            bus2.passDiagnostic();
+            truck1.passDiagnostic();
+            bus1.passDiagnostic();
+            car2.passDiagnostic();
+        } catch (TransportTypeException e) {
+            e.printStackTrace();
+            System.out.println("Автобусам проходить диагностику не нужно");
+        }
 //        try {
 //            bus1.passDiagnostic();
 //        } catch (TransportTypeException e) {
 //            throw new TransportTypeException("Автобус не может проходить диагностику");
 //            //System.out.println("Автобусам проходить диагностику не нужно");
-//        }}
+//        }
 
 
     }
