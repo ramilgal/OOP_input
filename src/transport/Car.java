@@ -1,10 +1,12 @@
 package transport;
 
+import java.util.List;
+
 public class Car extends Transport <DriverB> {
     private BodyType bodyType;
 
-    public Car(String brand, String model, double engineVolume, DriverB driver, BodyType bodyType) {
-        super(brand, model, engineVolume, driver);
+    public Car(String brand, String model, double engineVolume, DriverB driver, BodyType bodyType, List<Mechanic> mechanics) {
+        super(brand, model, engineVolume, driver, mechanics);
         setBodyType(bodyType);
     }
 
@@ -58,7 +60,7 @@ public class Car extends Transport <DriverB> {
     return "Тип средства: " + getType() +
             ", марка: " + getBrand() +
                 ", модель: " + getModel() +
-            ", " + bodyType;
+            ", " + bodyType + ", механик:" + getListMechanics();
         }
     @Override
     public boolean passDiagnostic() {

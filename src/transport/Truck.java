@@ -1,10 +1,12 @@
 package transport;
 
+import java.util.List;
+
 public class Truck extends Transport <DriverC> {
     private LoadCapacity loadCapacity;
 
-    public Truck(String brand, String model, double engineVolume, DriverC driver, LoadCapacity loadCapacity) {
-        super(brand, model, engineVolume, driver);
+    public Truck(String brand, String model, double engineVolume, DriverC driver, LoadCapacity loadCapacity, List<Mechanic> mechanics) {
+        super(brand, model, engineVolume, driver, mechanics);
         setLoadCapacity(loadCapacity);
     }
 
@@ -67,7 +69,7 @@ public class Truck extends Transport <DriverC> {
                 ", грузоподъемность: " +
                 "от " + loadCapacity.getMin() +
                 " до " + loadCapacity.getMax() +
-                " тонн";
+                " тонн" + ", механик:" + getListMechanics();
     }
     @Override
     public boolean passDiagnostic() {

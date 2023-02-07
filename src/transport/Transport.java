@@ -1,12 +1,16 @@
 package transport;
 
+
+import java.util.List;
+
 public abstract class Transport <T extends Driver> implements Competing {
+
     private String brand;
     private String model;
     private double engineVolume;
     private T driver;
-
-    public Transport(String brand, String model, double engineVolume, T driver) {
+    private List<Mechanic> listMechanics;
+    public Transport(String brand, String model, double engineVolume, T driver, List<Mechanic> listMechanics) {
         if (brand == null || brand.isBlank() || brand.isEmpty()) {
             this.brand = "default";
         } else this.brand = brand;
@@ -15,6 +19,7 @@ public abstract class Transport <T extends Driver> implements Competing {
         } else this.model = model;
         setEngineVolume(engineVolume);
         setDriver(driver);
+        this.listMechanics = listMechanics;
     }
 
     public abstract void startMoving();
@@ -23,6 +28,15 @@ public abstract class Transport <T extends Driver> implements Competing {
     public abstract void printType();
 
      abstract boolean passDiagnostic() throws TransportTypeException;
+    //Метод, который проверяет, нужно ли проходить техосмотр транспорту:
+    public boolean checkIsTransportNeedPassDiagnostic() {
+        try {
+            passDiagnostic();
+        } catch (TransportTypeException e) {
+            return false;
+        }
+        return true;
+    }
 
     public abstract Type getType();
 
@@ -67,5 +81,13 @@ public abstract class Transport <T extends Driver> implements Competing {
 
     public void setDriver(T driver) {
         this.driver = driver;
+    }
+
+    public List<Mechanic> getListMechanics() {
+        return listMechanics;
+    }
+
+    public void setListMechanics(List<Mechanic> listMechanics) {
+        this.listMechanics = listMechanics;
     }
 }
