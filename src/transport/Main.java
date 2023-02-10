@@ -1,9 +1,6 @@
 package transport;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 import static transport.Capacity.*;
 import static transport.BodyType.*;
@@ -109,7 +106,43 @@ public class Main {
             service.makeTechService(transportToServiceStation);
         }
 
+        System.out.println("Домашнее задание MAP");
 
+        Map<Transport, List<Mechanic>> testMap = new HashMap<>();
+        testMap.put(car1, car1.getListMechanics());
+        testMap.put(car2, car2.getListMechanics());
+        testMap.put(car3, car3.getListMechanics());
+        testMap.put(car4, car4.getListMechanics());
+        testMap.put(bus1, bus1.getListMechanics());
+        testMap.put(bus2, bus2.getListMechanics());
+        testMap.put(bus3, bus3.getListMechanics());
+        testMap.put(bus4, bus4.getListMechanics());
+        testMap.put(truck1, truck1.getListMechanics());
+        testMap.put(truck2, truck2.getListMechanics());
+        testMap.put(truck3, truck3.getListMechanics());
+        testMap.put(truck4, truck4.getListMechanics());
+        for (Map.Entry<Transport, List<Mechanic>> testPrint : testMap.entrySet()) {
+            System.out.println("Авто: " + testPrint.getKey() + ", механик: " + testPrint.getValue());
+        }
+    }
+
+    private static void printInfoRace(Transport transport) {
+        System.out.println("водитель "+ transport.getDriver().getName() + " управляет автомобилем " + transport.getBrand()+ " " +transport.getModel() + " и будет участвовать в заезде");
+    }
+}
+
+interface Competing {
+    void pitStop();
+    void bestTimeOfLap();
+    void  maxSpeed();
+}
+
+
+
+//
+//
+//
+//
 //        try {
 //            car1.passDiagnostic();
 //            bus1.passDiagnostic();
@@ -127,40 +160,3 @@ public class Main {
 //            throw new TransportTypeException("Автобус не может проходить диагностику");
 //            //System.out.println("Автобусам проходить диагностику не нужно");
 //        }
-
-
-//        List<Transport> listTr = new ArrayList<>();
-//        listTr.add(new Car("Lada", "Granta", 1.8D, DriverB,SEDAN));
-//        listTr.add(new Car("Audi", "A8 50 L TDI quattro", 3.0D, DriverB, SEDAN);
-//        listTr.add(Car car3 = new Car("BMW", "Z8",3.0D, DriverB, SEDAN);
-//        listTr.add(Car car4 = new Car("Kia", "Sportage 4", 2.4D, DriverB, CROSSOVER);
-//        listTr.add(Bus bus1 = new Bus("Нефаз", "Городской", 4.0, DriverD, BIG);
-//        listTr.add(Bus bus2 = new Bus("Белфаз", "Первый", 4.3, DriverD, SMALL);
-//        listTr.add(Bus bus3 = new Bus("Икарус", "Второй", 4.2, DriverD, VERY_BIG);
-//        listTr.add(Bus bus4 = new Bus("Москвич", "Третий", 4.5, DriverD, MIDDLE);
-//        listTr.add(Truck truck1 = new Truck("Камаз", "Первый", 5.0, DriverC,N1);
-//        listTr.add(Truck truck2 = new Truck("Камаз", "Второй", 5.5, DriverC, N2);
-//        listTr.add(Truck truck3 = new Truck("Камаз", "Третий", 5.8, DriverC, N3);
-//        listTr.add(Truck truck4 = new Truck("Камаз", "Четвертый", 5.2, DriverC, N3);
-//        listTr.add(new Car ("Lada", "Гранда", 1.5D, DriverB, SEDAN));
-//        listTr.add("Audi");
-//        listTr.add("BMW");
-//        listTr.add("KIA");
-//        System.out.println(listTr);
-//        System.out.println(listTr.get(3));
-//        Mechanic.doService(car1);
-//        Mechanic.fixCar(car2);
-
-
-    }
-
-    private static void printInfoRace(Transport transport) {
-        System.out.println("водитель "+ transport.getDriver().getName() + " управляет автомобилем " + transport.getBrand()+ " " +transport.getModel() + " и будет участвовать в заезде");
-    }
-}
-
-interface Competing {
-    void pitStop();
-    void bestTimeOfLap();
-    void  maxSpeed();
-}
