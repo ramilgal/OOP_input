@@ -137,3 +137,26 @@ interface Competing {
     void  maxSpeed();
 }
 
+
+
+//
+//
+//
+//
+//        try {
+//            car1.passDiagnostic();
+//            bus1.passDiagnostic();
+//            bus2.passDiagnostic();
+//            truck1.passDiagnostic();
+//            bus1.passDiagnostic();
+//            car2.passDiagnostic();
+//        } catch (TransportTypeException e) {
+//            e.printStackTrace();
+//            System.out.println("Автобусам проходить диагностику не нужно");
+//        }
+//        try {
+//            bus1.passDiagnostic();
+//        } catch (TransportTypeException e) {
+//            throw new TransportTypeException("Автобус не может проходить диагностику");
+//            //System.out.println("Автобусам проходить диагностику не нужно");
+//        }
