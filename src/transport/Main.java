@@ -124,6 +124,29 @@ public class Main {
         for (Map.Entry<Transport, List<Mechanic>> testPrint : testMap.entrySet()) {
             System.out.println("Авто: " + testPrint.getKey() + ", механик: " + testPrint.getValue());
         }
+
+        System.out.println("Домашнее задание SET");
+
+        Set<Driver> drivers = new HashSet<>();
+        drivers.add(DriverB);
+        drivers.add(DriverB);
+        drivers.add(DriverC);
+        drivers.add(DriverC);
+        drivers.add(DriverD);
+        drivers.add(DriverD);
+        drivers.add(new DriverD("Игорь", true, 8));
+
+        //вывод в консоль без Iterator:
+        for (Driver driver : drivers) {
+            System.out.println(driver);
+        }
+        System.out.println();
+
+        //Вывод с помощью Iterator:
+Iterator<Driver> iterDrivers = drivers.iterator();
+        while (iterDrivers.hasNext()) {
+            System.out.println(iterDrivers.next());
+        }
     }
 
     private static void printInfoRace(Transport transport) {
